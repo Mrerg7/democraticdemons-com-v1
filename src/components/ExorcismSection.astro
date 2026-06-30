@@ -1,0 +1,57 @@
+<div id="exorcism" class="max-w-4xl mx-auto px-6 pb-24 scroll-mt-20">
+  <div class="bg-zinc-900 border border-red-950 rounded-3xl p-10 md:p-14">
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-red-950 rounded-2xl mb-4">
+        <i class="fa-solid fa-cross text-red-600 text-4xl"></i>
+      </div>
+      <h2 class="heading-font text-4xl font-semibold tracking-tighter">BEGIN THE EXORCISM</h2>
+      <p class="text-zinc-400 mt-2">Testify. Confess what you have seen. The sulfur rises when silence ends.</p>
+    </div>
+
+    <form id="exorcism-form" onsubmit="submitExorcism(event)" class="space-y-5">
+      <div class="grid md:grid-cols-2 gap-5">
+        <div>
+          <label class="block text-xs font-mono tracking-widest text-zinc-500 mb-1.5">YOUR NAME (OR ALIAS)</label>
+          <input type="text" id="name" class="w-full bg-zinc-950 border border-zinc-800 focus:border-red-600 rounded-2xl px-5 py-3 text-sm outline-none" placeholder="Exorcised Voter" required />
+        </div>
+        <div>
+          <label class="block text-xs font-mono tracking-widest text-zinc-500 mb-1.5">STATE / REGION</label>
+          <input type="text" id="location" class="w-full bg-zinc-950 border border-zinc-800 focus:border-red-600 rounded-2xl px-5 py-3 text-sm outline-none" placeholder="Phoenix, AZ or Hell Adjacent" required />
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-mono tracking-widest text-zinc-500 mb-1.5">WHAT DEMONIC ACT HAVE YOU WITNESSED?</label>
+        <textarea id="testimony" rows="4" class="w-full bg-zinc-950 border border-zinc-800 focus:border-red-600 rounded-3xl px-5 py-4 text-sm outline-none resize-y" placeholder="I watched my city release criminal illegals after they..." required></textarea>
+      </div>
+
+      <div class="flex items-center gap-x-4">
+        <button type="submit"
+                class="flex-1 md:flex-none px-10 py-4 bg-red-600 hover:bg-red-700 active:bg-red-800 transition-all font-semibold rounded-3xl text-sm flex items-center justify-center gap-x-3 shadow-xl shadow-red-950/40">
+          <i class="fa-solid fa-skull"></i>
+          <span>RECORD MY TESTIMONY IN THE BOOK OF HELL</span>
+        </button>
+        <button type="button" onclick="clearForm()"
+                class="px-6 py-4 border border-zinc-700 hover:border-zinc-600 rounded-3xl text-sm font-medium transition-all">
+          CLEAR
+        </button>
+      </div>
+    </form>
+
+    <div class="text-center mt-6 text-[10px] text-zinc-500 font-mono tracking-widest">
+      ALL TESTIMONIES ARE ANONYMIZED AND ARCHIVED IN THE INFERNAL LEDGER.<br />
+      THE DEMONS HATE WITNESSES.
+    </div>
+  </div>
+</div>
+
+<div class="max-w-4xl mx-auto px-6 pb-16 text-center">
+  <div class="inline-block px-8 py-5 border border-zinc-800 rounded-3xl">
+    <p class="text-xl font-light tracking-tight text-zinc-300">
+      The theater has masks.<br />
+      <span class="text-red-600 font-semibold">The demons have none.</span><br />
+      The decade is over.<br />
+      <span class="text-red-500">The reckoning begins.</span>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --hell-red: #b91c1c;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .heading-font {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+
+  .demonic-bg {
+    background-color: #0c0c0c;
+    background-image:
+      linear-gradient(rgba(185, 28, 28, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(185, 28, 28, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .section-header {
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(to right, #b91c1c, transparent);
+  }
+
+  .sin-card {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #3f1f1f;
+  }
+
+  .sin-card:hover {
+    transform: translateY(-4px);
+    border-color: #b91c1c;
+    box-shadow: 0 0 0 1px #b91c1c, 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+
+  .demonic-list li {
+    position: relative;
+    padding-left: 1.75rem;
+  }
+
+  .demonic-list li::before {
+    content: '👹';
+    position: absolute;
+    left: 0;
+    color: #b91c1c;
+    font-size: 0.9rem;
+  }
+
+  .flame {
+    animation: flicker 1.5s infinite alternate;
+  }
+
+  @keyframes flicker {
+    0% { opacity: 1; }
+    100% { opacity: 0.85; }
+  }
+
+  .manifesto-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .sin-year {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .infernal-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #3f1f1f, transparent);
+  }
+}

@@ -1,0 +1,3 @@
+# Cloudflare Pages _redirects
+# Force HTTPS and www/non-www canonicalization
+https://democraticdemons.com/* https://democraticdemons.com/:splat 301

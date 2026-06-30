@@ -1,0 +1,118 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Manifesto from '../components/Manifesto.astro';
+import MammonSection from '../components/MammonSection.astro';
+import HordeSection from '../components/HordeSection.astro';
+import MolochSection from '../components/MolochSection.astro';
+import UsaidSection from '../components/UsaidSection.astro';
+import RedPlagueSection from '../components/RedPlagueSection.astro';
+import PitSection from '../components/PitSection.astro';
+import ExorcismSection from '../components/ExorcismSection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="democraticdemons.com • The Demonic Decade: 2016–2026"
+  description="Caustic. Corrosive. Unflinching. The infernal record of Democratic deeds over the last decade. Insider trading. Open borders. Abortion. USAID. Communist capture. No theater. Just sulfur."
+>
+  <!-- Demonic Background Overlay -->
+  <div class="demonic-bg min-h-screen">
+    <Nav />
+    <Hero />
+    <Manifesto />
+    <MammonSection />
+    <HordeSection />
+    <MolochSection />
+    <UsaidSection />
+    <RedPlagueSection />
+    <PitSection />
+    <ExorcismSection />
+    <Footer />
+  </div>
+
+  <script>
+    function initializeTailwind() {
+      document.documentElement.style.setProperty('--accent', '#b91c1c');
+    }
+
+    function submitExorcism(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim() || 'Anonymous Witness';
+      const location = document.getElementById('location').value.trim();
+      const testimony = document.getElementById('testimony').value.trim();
+
+      const btn = e.target.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+
+      btn.innerHTML = `<i class="fa-solid fa-check mr-2"></i> TESTIMONY RECORDED`;
+      btn.disabled = true;
+      btn.classList.add('!bg-emerald-600', '!hover:bg-emerald-700');
+
+      setTimeout(() => {
+        const modal = document.createElement('div');
+        modal.className = 'fixed inset-0 bg-black/90 flex items-center justify-center z-[100] p-6';
+        modal.innerHTML = `
+          <div class="max-w-md w-full bg-zinc-900 border border-red-950 rounded-3xl p-8 text-center">
+            <div class="mx-auto w-16 h-16 bg-red-950 rounded-2xl flex items-center justify-center mb-5">
+              <i class="fa-solid fa-book-skull text-red-600 text-3xl"></i>
+            </div>
+            <h3 class="text-2xl font-semibold tracking-tight mb-2">Testimony Archived</h3>
+            <p class="text-zinc-400 text-sm mb-6">Your account of the demonic act has been sealed in the Infernal Ledger.<br>The demons are watching.</p>
+
+            <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-4 text-left text-xs mb-6">
+              <div class="font-mono text-red-600 mb-1">WITNESS:</div>
+              <div class="font-medium">${name}</div>
+              <div class="font-mono text-red-600 mt-3 mb-1">LOCATION:</div>
+              <div>${location}</div>
+            </div>
+
+            <button onclick="this.closest('.fixed').remove(); resetExorcismForm()"
+                    class="w-full py-3.5 bg-white text-black font-semibold rounded-2xl text-sm active:scale-[0.985] transition-transform">
+              RETURN TO THE SURFACE
+            </button>
+          </div>
+        `;
+        document.body.appendChild(modal);
+
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        btn.classList.remove('!bg-emerald-600', '!hover:bg-emerald-700');
+      }, 1200);
+    }
+
+    function resetExorcismForm() {
+      document.getElementById('exorcism-form').reset();
+    }
+
+    function clearForm() {
+      document.getElementById('exorcism-form').reset();
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === "Escape") {
+        const modals = document.querySelectorAll('.fixed.inset-0');
+        if (modals.length) modals[modals.length - 1].remove();
+      }
+    });
+
+    function init() {
+      initializeTailwind();
+      console.log('%c[democraticdemons.com] Sulfur detected. The record is live.', 'color:#3f1f1f; font-size:9px');
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+    }
+
+    window.onload = init;
+  </script>
+</Layout>
