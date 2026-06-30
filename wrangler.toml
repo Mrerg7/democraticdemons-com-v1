@@ -1,15 +1,8 @@
 name = "democraticdemons-com"
 compatibility_date = "2024-12-01"
-pages_build_output_dir = "dist"
 
 [assets]
 directory = "dist"
-binding = "ASSETS"
-html_handling = "auto"
-not_found_handling = "404"
-
-[[redirects]]
-from = "/"
-to = "https://democraticdemons.com"
-kind = "static"
-status = 200
+binding = "MY_ASSETS"
+html_handling = "auto-trailing-slash"
+not_found_handling = "none"
