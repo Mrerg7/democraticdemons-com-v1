@@ -7,5 +7,5 @@
     },
     "jsx": "preserve"
   },
-  "include": ["src/**/*.ts", "src/**/*.astro"]
+  "include": ["src/**/*.ts", "src/**/*.astro", "src/worker.ts"]
 }

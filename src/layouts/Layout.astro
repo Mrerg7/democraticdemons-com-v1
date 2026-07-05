@@ -7,9 +7,19 @@ export interface Props {
   canonical?: string;
 }
 
-const { title, description, canonical = 'https://democraticdemons.com' } = Astro.props;
+const { title, description, canonical: canonicalProp } = Astro.props;
 const ogImage = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/478285d5-39e5-4aa0-5ffa-bae6af8c0a00/og';
-const siteUrl = 'https://democraticdemons.com';
+const siteUrl = Astro.site!.href.replace(/\/$/, '');
+
+function normalizeCanonical(pathname: string): string {
+  const url = new URL(pathname, Astro.site);
+  if (url.pathname === '/') {
+    return url.origin;
+  }
+  return url.href.replace(/\/$/, '');
+}
+
+const canonical = canonicalProp ?? normalizeCanonical(Astro.url.pathname);
 ---
 
 <!DOCTYPE html>
@@ -29,7 +39,7 @@ const siteUrl = 'https://democraticdemons.com';
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content={siteUrl} />
+  <meta property="og:url" content={canonical} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImage} />
@@ -57,15 +67,7 @@ const siteUrl = 'https://democraticdemons.com';
     "@type": "WebSite",
     "name": "democraticdemons.com",
     "url": siteUrl,
-    "description": description,
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": `${siteUrl}/search?q={search_term_string}`
-      },
-      "query-input": "required name=search_term_string"
-    }
+    "description": description
   })}></script>
 
   <!-- Structured Data: Organization -->
