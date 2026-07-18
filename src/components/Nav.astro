@@ -1,18 +1,16 @@
 <nav class="border-b border-zinc-800 bg-[#0c0c0c]/95 backdrop-blur-lg sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex items-center justify-between h-20">
-      <div class="flex items-center gap-x-4">
-        <div class="flex items-center gap-x-3">
-          <div class="w-9 h-9 bg-red-600 flex items-center justify-center rounded-xl shadow-inner">
-            <i class="fa-solid fa-skull text-white text-2xl"></i>
-          </div>
-          <div>
-            <span class="heading-font text-3xl font-semibold tracking-tighter">democratic</span>
-            <span class="heading-font text-3xl font-semibold tracking-tighter text-red-600">demons</span>
-            <span class="text-[10px] align-super text-red-600 font-mono">.com</span>
-          </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16 sm:h-20">
+      <a href="#" class="flex items-center gap-x-2 sm:gap-x-3 min-w-0">
+        <div class="w-8 h-8 sm:w-9 sm:h-9 shrink-0 bg-red-600 flex items-center justify-center rounded-xl shadow-inner">
+          <i class="fa-solid fa-skull text-white text-lg sm:text-2xl"></i>
         </div>
-      </div>
+        <div class="min-w-0">
+          <span class="heading-font text-xl sm:text-3xl font-semibold tracking-tighter">democratic</span>
+          <span class="heading-font text-xl sm:text-3xl font-semibold tracking-tighter text-red-600">demons</span>
+          <span class="text-[10px] align-super text-red-600 font-mono">.com</span>
+        </div>
+      </a>
 
       <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
         <a href="#mammon" class="hover:text-red-500 transition-colors">Mammon</a>
@@ -23,14 +21,65 @@
         <a href="#pit" class="hover:text-red-500 transition-colors">The Pit</a>
       </div>
 
-      <div class="flex items-center gap-x-4">
+      <div class="flex items-center gap-x-2 sm:gap-x-4">
+        <button
+          id="nav-toggle"
+          type="button"
+          class="md:hidden p-2.5 rounded-xl border border-zinc-800 text-zinc-300 hover:border-zinc-600 transition-colors"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
         <a href="#exorcism"
-           class="px-5 py-2.5 text-sm font-semibold bg-red-600 hover:bg-red-700 transition-all rounded-2xl flex items-center gap-x-2 shadow-lg shadow-red-950/50">
+           class="px-4 sm:px-5 py-2.5 text-sm font-semibold bg-red-600 hover:bg-red-700 transition-all rounded-2xl flex items-center gap-x-2 shadow-lg shadow-red-950/50">
           <i class="fa-solid fa-cross"></i>
           <span class="hidden sm:inline">Begin Exorcism</span>
         </a>
       </div>
     </div>
+
+    <div id="mobile-nav" class="hidden md:hidden border-t border-zinc-800 py-4">
+      <div class="flex flex-col gap-1">
+        <a href="#mammon" class="nav-mobile-link px-2 py-3 text-sm font-medium hover:text-red-500 transition-colors">Mammon</a>
+        <a href="#horde" class="nav-mobile-link px-2 py-3 text-sm font-medium hover:text-red-500 transition-colors">Horde</a>
+        <a href="#moloch" class="nav-mobile-link px-2 py-3 text-sm font-medium hover:text-red-500 transition-colors">Moloch</a>
+        <a href="#usaid" class="nav-mobile-link px-2 py-3 text-sm font-medium hover:text-red-500 transition-colors">Abyss</a>
+        <a href="#redplague" class="nav-mobile-link px-2 py-3 text-sm font-medium hover:text-red-500 transition-colors">Red Plague</a>
+        <a href="#pit" class="nav-mobile-link px-2 py-3 text-sm font-medium hover:text-red-500 transition-colors">The Pit</a>
+      </div>
+    </div>
   </div>
 </nav>
 
+<script>
+  function initMobileNav() {
+    const toggle = document.getElementById('nav-toggle');
+    const menu = document.getElementById('mobile-nav');
+    if (!toggle || !menu) return;
+
+    const icon = toggle.querySelector('i');
+
+    function setOpen(open: boolean) {
+      menu.classList.toggle('hidden', !open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+      if (icon) {
+        icon.classList.toggle('fa-bars', !open);
+        icon.classList.toggle('fa-xmark', open);
+      }
+    }
+
+    toggle.addEventListener('click', () => {
+      setOpen(menu.classList.contains('hidden'));
+    });
+
+    menu.querySelectorAll('.nav-mobile-link').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+  }
+
+  initMobileNav();
+  document.addEventListener('astro:page-load', initMobileNav);
+</script>
