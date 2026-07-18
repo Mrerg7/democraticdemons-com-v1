@@ -1,0 +1,56 @@
+---
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 | democraticdemons.com</title>
+  <meta name="robots" content="noindex" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body class="bg-[#0c0c0c] text-zinc-200 min-h-screen flex flex-col items-center justify-center p-6">
+  <div class="max-w-lg w-full text-center">
+    <div class="mx-auto w-20 h-20 bg-red-950 border border-red-800 rounded-3xl flex items-center justify-center mb-8">
+      <i class="fa-solid fa-skull text-red-600 text-4xl"></i>
+    </div>
+
+    <div class="heading-font text-7xl sm:text-8xl font-semibold tracking-tighter mb-4">
+      <span>demo</span><span class="text-red-600">404</span>
+    </div>
+
+    <p class="text-xl sm:text-2xl font-semibold heading-font tracking-tight text-zinc-300 mb-3">
+      This page has been exorcised.
+    </p>
+
+    <div class="infernal-divider my-6"></div>
+
+    <p class="text-zinc-400 leading-relaxed mb-8">
+      The page you summoned does not exist. It may have been dragged into the Pit,
+      consumed by demons, or simply never manifested in this realm.
+    </p>
+
+    <a href="/"
+       class="inline-flex items-center justify-center gap-x-3 px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-2xl text-base transition-all shadow-xl shadow-red-950/50 active:scale-[0.98]">
+      <i class="fa-solid fa-house"></i>
+      RETURN TO THE SURFACE
+    </a>
+
+    <p class="mt-8 text-xs text-zinc-600">
+      <span class="font-mono tracking-[3px] text-red-600">DEMOCRATICDEMONS.COM</span>
+    </p>
+  </div>
+
+  <script>
+    const path = window.location.pathname;
+    console.warn('[democraticdemons.com] 404: No page found at ' + path);
+  </script>
+</body>
+</html>
